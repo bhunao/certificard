@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;700&display=swap');
+
+
+body {
+    background: #31363B;
+    margin: 0;
+    padding: 0px;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 20px;
+    color: #87c095;   
+}
+
+.menu {
+    background: #3A3F43;
+    font-size: 18px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.editor-area {
+    flex: 1;
+    border-left: 1px solid #474F54;
+    padding-left: 32px;
+}
+
+.tree {
+    color: #87c095;
+    flex: 0 1 300px;
+}
+
+.statusbar {
+    background: #3F464B;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.item {
+    flex: 1;
+}
+
+.item-big {
+    flex: 2;
+}
+
+.menu-middle {
+    text-align: center;
+}
+
+.menu-right {
+    text-align: right;
+}
+
+.padd {
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.flex-container {
+    color: #ffffff;
+    display: flex;
+}
+
+.mid-border {
+    padding: 8px;
+    border: 2px solid #767b82;
+    margin-bottom: 8px;
+}
+
+.mode {
+    background-color: #87c095;
+    color: #2A2F33;
+    font-weight: bolder;
+}
+
+li {
+    color: #bfddb2;
+    list-style: none;
+    padding-left: 32px;
+    margin-left: 32px;
+}
+
+li:hover {
+    background-color: #129a22;
+}
+
+.icon {
+    max-width: 100%;
+    height: auto;
+    background: url("imgs/icon.png") no-repeat left top;
+}
+
+.icon-python {
+    max-width: 100%;
+    height: auto;
+    background: url("imgs/icon-python.png") no-repeat left top;
+}
+
+.icon-js {
+    max-width: 100%;
+    height: auto;
+    background: url("imgs/icon-javascript.png") no-repeat left top;
+}
+
+.menu-icon {
+    padding-left: 4px;
+    max-width: 18px;
+    height: auto;
+}
+
+.menu-icon:hover {
+    filter: invert(50%);
+}
