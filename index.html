@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>certificard</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <!-- Header -->
         <header>
             <div class="flex-container">
-                <div class="menu item">
+                <div id="date" class="menu item">
                     Fri 1 Oct, 23:38
                 </div>
                 <div class="menu item-big menu-middle">
@@ -30,7 +30,7 @@
         </header>
 
         <div class='padd'>
-            <div class="mid-border">
+            <div class="mid-border background-color">
             <div class="flex-container">
                 <!-- Sidebar -->
                 <div class="tree">
@@ -43,35 +43,18 @@
                     <li class="icon-python">random python project</li>
                 </div>
 
+                <!-- line number -->
+                <div id="line-number" class="line-number"></div>
+
                 <!-- Content -->
                 <div class="editor-area">
-                    Content
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu justo enim. Maecenas egestas
-                        semper est, quis varius ligula iaculis vitae. Mauris laoreet a mauris sit amet lobortis. Nulla
-                        sed ligula neque. Sed vel lorem ac nisi scelerisque tempor. Nam in augue id tellus mattis
-                        bibendum a a tortor. Donec volutpat arcu nec nunc eleifend, a faucibus enim laoreet. Aliquam
-                        ultrices nisi mauris, id malesuada massa fringilla et. In eu mattis nisi. Sed fermentum egestas
-                        sapien in rhoncus.
-
-                        Quisque quis purus nibh. Morbi dignissim pellentesque velit nec auctor. Ut efficitur volutpat
-                        luctus. Sed feugiat ipsum odio, eu posuere metus iaculis ut. Sed congue maximus velit, elementum
-                        semper lorem rhoncus quis. Fusce est massa, bibendum suscipit mi non, hendrerit iaculis nulla.
-                        Aliquam cursus bibendum urna nec congue. Sed nisi dui, tempus non tincidunt at, sodales sed
-                        lectus. Fusce quam neque, ullamcorper nec blandit vel, placerat at lorem. Quisque rhoncus porta
-                        neque vitae porttitor. Fusce sit amet magna non ex ultricies lacinia eget ac quam. Aenean magna
-                        eros, fermentum non finibus rhoncus, blandit a erat. Cras vel faucibus magna, eu accumsan diam.
-                        Cras varius ex ut lorem dapibus volutpat.
-
-                        Nam ex tortor, aliquet et orci eu, pulvinar imperdiet erat. Curabitur non mauris suscipit,
-                        placerat ex in, semper justo. Duis risus justo, aliquam vel posuere vitae, tristique faucibus
-                        magna. Nulla fermentum, ante eget cursus finibus, ligula lorem mollis mi, et pellentesque elit
-                        purus a sem. Aenean consequat, massa suscipit porta volutpat, purus turpis faucibus nisl, et
-                        sollicitudin tortor mi id tortor. Maecenas rhoncus odio id gravida tincidunt. Pellentesque sed
-                        lacinia turpis. Sed mollis, diam sit amet pharetra feugiat, nunc lacus pellentesque elit, vitae
-                        condimentum urna orci blandit ligula. Donec non diam vel enim lobortis laoreet. Integer finibus
-                        lobortis mauris, tempus porta orci condimentum ac. Donec laoreet pretium elit et suscipit. Nam
-                        luctus massa in felis venenatis efficitur vitae vel tortor.</p>
+                    <span>var me = {name:"bruno félix",</span>
+                    <br><span class="indent">position: "python developer"}</span>
+                    <br>
+                    <br><span>var projects = [</span>
+                    <div id="projects" class="indent"></div>
+                    <br><span class="indent">]</span>
+                    <span onclick="tst()">teste</span>
                 </div>
             </div>
             <div class=flex-container>
@@ -95,6 +78,7 @@
 
     </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

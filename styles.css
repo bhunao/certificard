@@ -3,11 +3,13 @@
 
 body {
     background: #31363B;
+    background: url("imgs/bg.jpg");
     margin: 0;
     padding: 0px;
     font-family: 'Gemunu Libre', sans-serif;
     font-size: 20px;
     color: #87c095;   
+    height: 100%;
 }
 
 .menu {
@@ -18,12 +20,13 @@ body {
 }
 
 .editor-area {
+    color: #bfddb2;
     flex: 1;
-    border-left: 1px solid #474F54;
-    padding-left: 32px;
+    padding-left: 8px;
 }
 
 .tree {
+    border-right: 1px solid #474F54;
     color: #87c095;
     flex: 0 1 300px;
 }
@@ -110,4 +113,17 @@ li:hover {
 
 .menu-icon:hover {
     filter: invert(50%);
+}
+
+.indent {
+    padding-left: 64px;
+}
+
+.line-number{
+    color: #767b82;
+    padding-left: 4px;
+}
+
+.background-color {
+    background: rgb(49, 54, 59, 0.9);
 }
