@@ -21,7 +21,7 @@ body {
 
 .editor-area {
     color: #bfddb2;
-    flex: 1;
+    flex: 2;
     padding-left: 8px;
 }
 
@@ -85,6 +85,7 @@ li {
 
 li:hover {
     background-color: #3F464B;
+    cursor: pointer;
 }
 
 .icon {
@@ -115,8 +116,12 @@ li:hover {
     filter: invert(50%);
 }
 
+.indent-two {
+    padding-left: 84px;
+}
+
 .indent {
-    padding-left: 64px;
+    padding-left: 42px;
 }
 
 .line-number{
@@ -126,4 +131,46 @@ li:hover {
 
 .background-color {
     background: rgb(49, 54, 59, 0.9);
+}
+
+.selected-line {
+    background-color: #3A3F43;
+}
+
+button {
+    background-color: #2A2F33;
+    border: 1px solid #87c095;
+    font-family: 'Gemunu Libre', sans-serif;
+    padding: 0px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 18px;
+    color: #bfddb2;
+}
+
+button:hover {
+    background-color: #31363B;
+}
+
+input {
+    background-color: #31363B;
+    border: 1px solid #87c095;
+    color: #87c095;   
+    border-radius: 0px;
+}
+
+tr table thead td {
+    border: 1px solid #87c095;
+}
+
+.clickable {
+}
+
+.clickable:hover {
+    background-color: #3F464B;
+    cursor: pointer;
+}
+
+a {
+    color: #bfddb2;
 }

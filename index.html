@@ -35,12 +35,13 @@
                 <!-- Sidebar -->
                 <div class="tree">
                     /home/bhunao/certificard
-                    <li class="icon">github</li>
-                    <li class="icon">linkedin</li>
-                    <li class="icon-js">super trunfo</li>
-                    <li class="icon-js">mentalista</li>
-                    <li class="icon-python">pokemon-api</li>
-                    <li class="icon-python">random python project</li>
+                    <li class="icon clickable"><a href="https://github.com/bhunao">github</a></li>
+                    <li class="icon clickable"><a href="https://linkedin.com/in/bhunao">linkedin</a></li>
+                    <li class="icon-js clickable" onclick="setContent(conversor)">conversor</li>
+                    <li class="icon-js clickable" onclick="setContent(mentalista)">mentalista</li>
+                    <li class="icon-js clickable" onclick="setContent(aluraflix)">aluraflix</li>
+                    <li class="icon-js clickable" onclick="setContent(tabela)">tabela</li>
+                    <li class="icon-js clickable" onclick="setContent(supertrunfo)">supertrunfo</li>
                 </div>
 
                 <!-- line number -->
@@ -48,14 +49,16 @@
 
                 <!-- Content -->
                 <div class="editor-area">
-                    <span>var me = {name:"bruno félix",</span>
-                    <br><span class="indent">position: "python developer"}</span>
+                    <span class="clickable" onclick="setContent('')" >var me = {name:"bruno félix",</span><br>
+                    <span class="indent">position: "python developer"}</span><br>
+                    <span class="indent">position: "python developer"}</span><br>
                     <br>
-                    <br><span>var projects = [</span>
+                    <br>var projects = [
                     <div id="projects" class="indent"></div>
-                    <br><span class="indent">]</span>
-                    <span onclick="tst()">teste</span>
+                    <span class="indent">]</span>
+                    <div id="content" class="item"></div>
                 </div>
+
             </div>
             <div class=flex-container>
                 <!-- Footer -->
@@ -78,7 +81,7 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
