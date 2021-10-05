@@ -163,14 +163,30 @@ tr table thead td {
     border: 1px solid #87c095;
 }
 
-.clickable {
-}
-
 .clickable:hover {
     background-color: #3F464B;
     cursor: pointer;
 }
 
 a {
+    text-decoration: underline;
     color: #bfddb2;
+}
+
+.info {
+    border-left: 1px solid #474F54;
+    min-width: 200px;
+    padding-left: 8px;
+    height: 100%;
+    color: #bfddb2;
+}
+
+.selectable:hover {
+    background-color: #3A3F43;
+    cursor: pointer;
+}
+
+input type[type=radio] {
+    background-color: #2A2F33;
+    border: 1px solid #87c095;
 }

@@ -1,5 +1,5 @@
 // config variables
-var projects = ["conversor", "mentalista", "aluraflix", "tabela", "supertrunfo"]
+var projects = ["conversor", "mentalista", "aluraflix", "tabela", "superTrunfo"]
 
 // project config variables
 
@@ -18,6 +18,32 @@ var watchList = {bakemonogatari:"https://cdn.myanimelist.net/images/anime/11/752
                 kizumonogatari:"https://upload.wikimedia.org/wikipedia/en/c/cc/Kizumonogatari_Part_1_Tekketsu_poster.jpeg",
                 nisemonogatari:"https://cdn.myanimelist.net/images/anime/1044/103654.jpg",
                 hanamonogatari:"https://cdn.myanimelist.net/images/anime/13/65755.jpg"}
+
+// superTrunfo
+var bulbasaur = {nome: "bulbasaur",
+                sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/bulbasaur.png",
+                atributos: {
+                    ataque: 30,
+                    defesa: 35,
+                    hp: 45
+                }}
+var squirtle = {nome: "squirtle",
+                sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/squirtle.png",
+                atributos: {
+                    ataque: 32,
+                    defesa: 32,
+                    hp: 50
+                }}
+var charmander = {nome: "charmander",
+                sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/charmander.png",
+                atributos: {
+                    ataque: 40,
+                    defesa: 30,
+                    hp: 40
+                }}
+var cartas = [bulbasaur, squirtle, charmander]
+var cardMachine
+var cardPlayer
 
 // page functions
 function getDate(){
@@ -54,21 +80,31 @@ function setListProjects(projectList){
 }
 
 function setContent(content=mentalista){
-    console.log(content)
+    resetContent()
     var element = document.getElementById("content")
     element.innerHTML = content
     if (content == tabela){
         createPlayersView(players)
     }else if(content == aluraflix){
         setAnimeList(watchList)
+        setAnimeImage(watchList.bakemonogatari, "Bakemonogatari")
+    //}else if(content == superTrunfo){
+    //    setPokemon(bulbasaur)
     }
 }
 
 function resetContent(){
+    document.getElementById("object-info").innerHTML = ""
     document.getElementById("content").innerHTML = ""
 }
 
+function setInfoContent(elementId ,content){
+    document.getElementById(elementId).innerHTML = `<div class="info">${content}</div>`
+}
+
 // project functions
+
+// mentalista
 function Chutar(){
         var chute = parseInt(document.getElementById("valor").value)
         var resultado = document.getElementById("resultado")
@@ -92,6 +128,7 @@ function Chutar(){
         tentativas ++
 }
 
+// conversor
 function Converter(conversionValue) {
     var value = document.getElementById("valor").value;
     var realValue = parseFloat(value) * conversionValue;
@@ -100,6 +137,7 @@ function Converter(conversionValue) {
     valorConvertido.innerHTML = "O resultado em real é R$: " + realValue;
   }
 
+// tabela
 function calcPoints(jogador){
     var pontos = (jogador.vitorias * 3) + jogador.empates
     return pontos
@@ -128,12 +166,10 @@ function addPlayer(){
     var playerName = document.getElementById("playerName")
     var newPlayer = {nome: playerName.value, vitorias:0, empates:0, derrotas:0}
     players.push(newPlayer)
-    console.log(players)
     createPlayersView(players)
 }
 
 function createPlayersView(players){
-    console.log(players)
     var element = ""
     for (var i=0; i<players.length; i++){
         element += "<tr><td>"+ players[i].nome +"</td>"
@@ -152,19 +188,127 @@ function createPlayersView(players){
     tabelaJogadores.innerHTML = element
 }
 
+// aluraflix
 function setAnimeList(list){
     var element = document.getElementById("animeList")
     var animeList = ""
-    var style = `{ background-image: url('${list[anime]}'); background-repeat: no-repeat; background-position: center bottom; height:20px width:100px; display:block; }`
+    var func = ""
 
     for (var anime in list){
-        animeList += `<span style="${style}" class="indent-two selected-line">${anime},</span><br>`
+        func = `setAnimeImage(watchList.${anime})`
+        animeList += `<a class="indent-two selected-line selectable" onclick="${func}">${anime},</a><br>`
     }
     element.innerHTML = animeList
 }
 
+function setAnimeImage(url){
+    var content = `<img src="${url}"><br>`
+    content += `<span style="text-align: center">${name}</span><br>`
+    setInfoContent("object-info", content)
+}
 
+// superTrunfo
+function setPokemon(pokemon){
+    var content = ""
 
+    content += `<img src="${pokemon.sprite}"><br>`
+    content += `nome: "${pokemon.nome}"<br>`
+    content += `atributos: <br>`
+    for (var attr in pokemon.atributos){
+        content += `<span class="indent selectable">${attr}: "${pokemon.atributos[attr]}"</span>
+          <input type='radio' name='atributo' value='${attr}'><br>`
+    }
+    content += `<div id="resultado"></div>`
+    content += `<div id="enemy"></div>`
+    setInfoContent("object-info", content)
+}
+
+function setPokemonEnemy(pokemon){
+    var content = ""
+
+    content += `<img src="${pokemon.sprite}"><br>`
+    content += `nome: "${pokemon.nome}"<br>`
+    content += `atributos: <br>`
+    for (var attr in pokemon.atributos){
+        content += `<span class="indent selectable">${attr}: "${pokemon.atributos[attr]}"</span><br>`
+    }
+    content += "<button onClick='resetContent()'>Fechar</button>"
+    setInfoContent("enemy", content)
+}
+
+function sortearCarta(){
+    var machineCard = parseInt(Math.random() * 3)
+    var playerCard = parseInt(Math.random() * 3)
+
+    while (machineCard == playerCard){
+        playerCard = parseInt(Math.random() * 3)
+    }
+
+    cardMachine = cartas[machineCard]
+    cardPlayer = cartas[playerCard]
+
+    document.getElementById("btnSortear").disabled = true;
+    document.getElementById("btnJogar").disabled = false;
+    setPokemon(cardPlayer)
+    //exibirCarta("carta-jogador", cardPlayer, input=true)
+}
+
+function obtemAtributoSelecionado(){
+    var atributos = document.getElementsByName("atributo")
+
+    for (var i=0; i<atributos.length; i++){
+        if (atributos[i].checked){
+            return atributos[i].value
+        }
+    }
+}
+
+function jogar(){
+    var atributoSelecionado = obtemAtributoSelecionado()
+    var elementoResultado = document.getElementById("resultado")
+    var valorCartaJogador = cardPlayer.atributos[atributoSelecionado]
+    var valorCartaMaquina = cardMachine.atributos[atributoSelecionado]
+    var resultado = ""
+
+    if (valorCartaJogador > valorCartaMaquina){
+        resultado = "Você venceu!"
+    }
+    else if (valorCartaJogador < valorCartaMaquina){
+        resultado = "Você perdeu!"
+    }
+    else if (valorCartaJogador == undefined){
+        resultado = "Escolha um atributo!"
+    }
+    else if (valorCartaJogador == valorCartaMaquina){
+        resultado = "Empate!"
+    }
+    elementoResultado.innerHTML = `<p class="resultado-filnal">${resultado}</p>`
+    document.getElementById("btnJogar").disabled = true;
+    //exibirCarta("carta-maquina", cardMachine)
+    setPokemonEnemy(cardMachine)
+}
+
+function exibirCarta(element, card, input=false){
+    var elementCartaJogador = document.getElementById(element)
+    elementCartaJogador.style.backgroundImage = `url(${card.sprite})`
+    var moldura = '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png" style=" width: inherit; height: inherit; position: absolute;">'
+    var tagHTML = "<div  id='opcoes' class='carta-status'>"
+    var nome = `<p class="carta-subtitle">${card.nome}</p>`
+    var opcoesTexto = ""
+
+    if(input){
+        var type = "input"
+    }
+    else{
+        var type = "p"
+    }
+    for (var atributo in card.atributos){
+        opcoesTexto += `<${type} type='radio' name='atributo' value='${atributo}'>`
+        opcoesTexto += atributo +":"+ card.atributos[atributo]
+        opcoesTexto += "<br>"
+    }
+    elementCartaJogador.innerHTML = moldura + nome + tagHTML + opcoesTexto + "</div>"
+}
 
 // project-html-variables
 const mentalista = `
@@ -184,8 +328,8 @@ const conversor = `
 <span class="indent selected-line">name: "conversor de moedas",</span><br>
 <span class="indent selected-line">text: "Descubra os valores em dolar U$",</span><br>
 <span class="indent selected-line">input: <input type="number" id="valor" /> ,</span><br>
-<span class="indent selected-line">button: <button type="submit" onclick="Converter(5.5)">Converter Dollar</button> ,</span><br>
-<span class="indent selected-line">button: <button type="submit" onclick="Converter(6.25)">Converter Dollar</button> ,</span><br>
+<span class="indent selected-line">button_dollar: <button type="submit" onclick="Converter(5.5)">Converter Dollar</button> ,</span><br>
+<span class="indent selected-line">button_euro: <button type="submit" onclick="Converter(6.25)">Converter Euro</button> ,</span><br>
 <span class="indent selected-line">result: "<span id="valorConvertido"></span> "<br>
 <span class="indent selected-line">sponsor:"alura"</span><br>
 <span class="indent selected-line">}</span><br>
@@ -246,6 +390,16 @@ var tabela = `
 </tr>
 </tbody>
 </table>
+`
+const superTrunfo = `
+<br>
+<span class="selected-line">var project = {</span><br>
+<span class="indent selected-line">name: "superTrunfo",</span><br>
+<span class="indent selected-line">button_sortear_carta: <button onclick="sortearCarta()" id="btnSortear">Sortear carta</button>,</span><br>
+<span class="indent selected-line">text: "Escolha o seu atributo",</span><br>
+<span class="indent selected-line">button_jogar: <button class="button-jogar" type="button" id="btnJogar" onclick="jogar()" disabled="false">Jogar</button>,</span><br>
+<span class="indent selected-line">sponsor: "alura"</span><br>
+<span class="indent selected-line">}</span><br>
 `
 
 line_numbers()
