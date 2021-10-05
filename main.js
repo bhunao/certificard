@@ -23,23 +23,23 @@ var watchList = {bakemonogatari:"https://cdn.myanimelist.net/images/anime/11/752
 var bulbasaur = {nome: "bulbasaur",
                 sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/bulbasaur.png",
                 atributos: {
-                    ataque: 30,
-                    defesa: 35,
+                    ataque: 49,
+                    defesa: 49,
                     hp: 45
                 }}
 var squirtle = {nome: "squirtle",
                 sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/squirtle.png",
                 atributos: {
-                    ataque: 32,
-                    defesa: 32,
-                    hp: 50
+                    ataque: 48,
+                    defesa: 65,
+                    hp: 44
                 }}
 var charmander = {nome: "charmander",
                 sprite: "https://img.pokemondb.net/sprites/firered-leafgreen/normal/charmander.png",
                 atributos: {
-                    ataque: 40,
-                    defesa: 30,
-                    hp: 40
+                    ataque: 42,
+                    defesa: 43,
+                    hp: 39
                 }}
 var cartas = [bulbasaur, squirtle, charmander]
 var cardMachine
@@ -87,9 +87,6 @@ function setContent(content=mentalista){
         createPlayersView(players)
     }else if(content == aluraflix){
         setAnimeList(watchList)
-        setAnimeImage(watchList.bakemonogatari, "Bakemonogatari")
-    //}else if(content == superTrunfo){
-    //    setPokemon(bulbasaur)
     }
 }
 
