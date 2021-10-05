@@ -1,6 +1,6 @@
-# Certificard - Projeto Alura ( Imersão Dev)
+# Certificard - Projeto Alura (Imersão Dev)
 
-Projeto final do curso de front-end Imersão Dev da Alura.
+Projeto final do curso de front-end Imersão Dev da Alura. O projeto pode ser visualisado na url [bhunao.github.io/certificard/](https://bhunao.github.io/certificard/)  
 
 ## Inspiração
 
